@@ -7,4 +7,6 @@ case "$1" in
         ;;
 esac
 
+mkdir /var/run/icinga2
+chmod 777 /var/run/icinga2
 /etc/init.d/icinga2 foreground
