@@ -7,4 +7,4 @@ case "$1" in
         ;;
 esac
 
-exec /etc/init.d/icinga2 foreground
+/etc/init.d/icinga2 foreground

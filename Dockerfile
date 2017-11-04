@@ -7,4 +7,4 @@ RUN apt-get update && apt-get install -y icinga2 \
   && apt-get -y --purge autoremove && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY docker-entrypoint.sh /
-ENTRYPOINT ["/bin/sh", "/docker-entrypoint.sh"]
+CMD ["/docker-entrypoint.sh"]
