@@ -3,7 +3,7 @@ MAINTAINER Jakub Kwiatkowski <jakub@ajbisoft.pl>
 
 COPY sources.list /etc/apt/
 COPY icinga2.gpg /etc/apt/trusted.gpg.d/icinga2.gpg
-RUN apt-get update && apt-get install -y icinga2 monitoring-plugins icinga2-ido-mysql vim-icinga2 vim-addon-manager \
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -yq nullmailer icinga2 icinga2-ido-mysql monitoring-plugins vim-icinga2 vim-addon-manager \
   && apt-get -y --purge autoremove && apt-get clean && rm -rf /var/lib/apt/lists/* \
   && vim-addon-manager -w install icinga2
 
