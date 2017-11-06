@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# Fix to bypass incinga2 daemon on demand
 case "$1" in
         *sh)
                 exec "$@"
@@ -7,6 +8,14 @@ case "$1" in
         ;;
 esac
 
+# Fix for icinga2 daemon to run from startup script
 mkdir /var/run/icinga2
 chmod 777 /var/run/icinga2
+
+# Fix to populate external volume on first startup
+if [ ! -f /etc/icinga2/icinga2.conf ]; then 
+	cp -a /etc/icinga2_orig/* /etc/icinga2/
+fi
+
+# Run icinga2 daemon in foreground mode
 /etc/init.d/icinga2 foreground
