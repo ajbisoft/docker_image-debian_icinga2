@@ -20,4 +20,5 @@ fi
 
 # Run icinga2 daemon in foreground mode
 icinga2 api setup
+service apache2 start
 /etc/init.d/icinga2 foreground
