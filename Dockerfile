@@ -7,9 +7,11 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -yq nullmai
   && apt-get -y --purge autoremove && apt-get clean && rm -rf /var/lib/apt/lists/* \
   && icinga2 feature enable ido-mysql \
   && vim-addon-manager -w install icinga2 \
-  && mv /etc/icinga2 /etc/icinga2_orig
-  
+  && mv /etc/icinga2 /etc/icinga2_orig \
+  && mv /etc/icingaweb2 /etc/icingaweb2_orig
+
 VOLUME ["/etc/icinga2"]
+VOLUME ["/etc/icingaweb2"]
 
 EXPOSE 80 443 5665
 COPY docker-entrypoint.sh /
