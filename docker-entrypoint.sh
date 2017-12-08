@@ -20,7 +20,8 @@ fi
 if [ ! -f /etc/icingaweb2/setup.token ]; then
         echo "Empty config dir. Initializing..."
         cp -a /etc/icingaweb2_orig/* /etc/icingaweb2/
-	su www-data -c "icingacli setup token create"
+	icingacli setup token create
+	chown :www-data /etc/icingaweb2/setup.token
 fi
 
 
